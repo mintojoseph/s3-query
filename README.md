@@ -1,4 +1,5 @@
 # s3-query
+
 Query s3 buckets
 
 ## Requirements
@@ -16,7 +17,7 @@ Query s3 buckets
 ./s3-query --help
 Usage of ./s3-query:
   -port string
-    	HTTP port. HTTPPORT environment variable can also be used. (default "8080")
+    HTTP port. HTTPPORT environment variable can also be used. (default "8080")
 ```
 
 Port can be set using HTTPPORT environment variable as well. Parameter takes precedence.
@@ -41,7 +42,7 @@ sudo docker container run -p 8080:8080 mintojoseph/s3-query:1.0
 Server can be queried using follwouing syntax.
 
 ```cmdline
-$ curl <hostname>:<port>/list?name=<bucket name>
+curl <hostname>:<port>/list?name=<bucket name>
 ```
 
 ```cmdline
@@ -52,6 +53,12 @@ Name:         testfile
 Storage class:STANDARD
 
 Found 2 items in bucket 
+```
+
+Use EXTERNAL-IP from following command as hostname.
+
+```cmdline
+ kubectl get svc
 ```
 
 ### Directories and files
