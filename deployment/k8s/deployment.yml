@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: s3-query
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: s3-query
+  template:
+    metadata:
+      labels:
+        app: s3-query
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+      - name: s3-query
+        image: mintojoseph/s3-query:latest
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        env:
+        - name: HTTPPORT
+          value: "8080"
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: secret-basic-auth
+              key: username
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: secret-basic-auth
+              key: password            
+
