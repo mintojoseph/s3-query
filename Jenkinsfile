@@ -20,7 +20,7 @@ node {
  
     stage('k8s secrets') {
    
-       sh "cd deployment/k8s; kubectl apply -f secret.yml"
+       sh "cd deployment/k8s; kubectl apply -f sealedsecret.yml"
 
     }
 
